@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { BiSearch } from "react-icons/bi";
 import { GoGlobe } from "react-icons/go";
@@ -7,12 +7,15 @@ import { BsPersonCircle } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineStorage } from "react-icons/md";
 
-
-
 const Navbar = () => {
+  const [nav, setNav] = useState(false);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
   return (
     <div>
-      <div className=" md:flex w-[1280px] h-20 border p-3 mx-4 shadow-lg hidden  ">
+      <div className=" md:flex w-[96%] h-20 border p-3 mx-6 shadow-lg hidden position-sticky ">
         <div>
           <img
             className="w-28 h-12 bg-white cursor-pointer"
@@ -49,7 +52,10 @@ const Navbar = () => {
               <GoGlobe />
             </button>
           </div>
-          <div className="flex w-24 border rounded-full gap-1  justify-around hover:shadow-md cursor-pointer">
+          <div
+            onClick={handleNav}
+            className="md:flex w-24 border rounded-full gap-1  justify-around hover:shadow-md cursor-pointer"
+          >
             <button className="">
               <HiOutlineMenu />
             </button>
@@ -72,21 +78,34 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="mr-8 items-end mt-4 cursor-pointer">
-     
-          <MdOutlineStorage />
+        <div className="  mt-5 cursor-pointer absolute right-4  ">
+          <  MdOutlineStorage />
         </div>
       </div>
-  
-  <div className=" w-64 text-center  shadow-2xl">
-    <ul className=" shadow-lg">
-        <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2 font-semibold">Sign Up</li>
-        <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2" >Log in</li>
-        <li  className=" cursor-pointer hover:bg-gray-200 rounded-md p-2">Airbnb your home</li>
-        <li  className=" cursor-pointer hover:bg-gray-200 rounded-md p-2">Help Center</li>
-    </ul>
-  </div>
 
+      <div
+        onClick={handleNav}
+        className={
+          nav
+            ? " absolute right-0 px-2  p-8 text-left w-64  flex flex-col"
+            : "absolute left-[-100%]"
+        }
+      >
+        <ul className=" shadow-2xl bg-white">
+          <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2 font-semibold">
+            Sign Up
+          </li>
+          <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2 border-b-2">
+            Log in
+          </li>
+          <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2">
+            Airbnb your home
+          </li>
+          <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2">
+            Help Center
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

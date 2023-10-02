@@ -91,7 +91,7 @@ const Navbar = () => {
             : "absolute left-[-100%]"
         }
       >
-        <ul className=" shadow-2xl bg-white">
+        <ul className=" shadow-2xl bg-white fixed">
           <li className=" cursor-pointer hover:bg-gray-200 rounded-md p-2 font-semibold">
             Sign Up
           </li>
